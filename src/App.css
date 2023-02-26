@@ -3,3 +3,7 @@
 body {
   font-family: rubik, sans-serif;
 }
+
+.h-map {
+  height: 500px;
+}
