@@ -4,6 +4,29 @@ body {
   font-family: rubik, sans-serif;
 }
 
+.form-control-border-radius {
+  border-radius: 15px 0 0 15px;
+}
+
+.button-border-radius {
+  border-radius: 0 15px 15px 0;
+}
+
 .h-map {
   height: 500px;
+}
+
+.h-search-bar {
+  height: 300px;
+}
+
+.bg-search-bar {
+  background-image: url('./assets/pattern-bg-mobile.png');
+  background-size: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .bg-search-bar {
+    background-image: url('./assets/pattern-bg-desktop.png');
+  }
 }
