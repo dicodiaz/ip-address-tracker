@@ -20,7 +20,7 @@ const SearchBar = () => {
   };
 
   return (
-    <Container className="px-0 h-search-bar bg-search-bar d-flex flex-column" as="section" fluid>
+    <Container className="px-0 flex-grow-1 bg-search-bar d-flex flex-column" as="section" fluid>
       <h1 className="text-center text-white mt-4 mb-0">IP Address Tracker</h1>
       <Form className="mt-4" onSubmit={handleSubmit}>
         <Row className="mx-0 g-0 justify-content-center" xs="auto">
