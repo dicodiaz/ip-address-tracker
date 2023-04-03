@@ -7,12 +7,13 @@ const reducer = {
   geolocationReducer,
 };
 
-const store = configureStore({
-  reducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(logger, localStorageMiddleware),
-});
+export const setupStore = (preloadedState) => {
+  return configureStore({
+    reducer,
+    preloadedState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(logger, localStorageMiddleware),
+  });
+};
 
 export const selectGeolocation = (state) => state.geolocationReducer.geolocation;
-
-export default store;
