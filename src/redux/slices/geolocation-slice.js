@@ -2,11 +2,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const BASE_URL = 'https://geo.ipify.org/api/v2/country,city';
-const API_KEY = 'at_vNW13sEuyWXo3iT3J6POo79iaKyAB';
+const API_KEY = 'at_mYVHi5CVgeidAtGIfkyfNq0vEzqLr';
 
 export const fetchGeolocationFromIpAddress = createAsyncThunk(
   'geolocation/fetchGeolocationFromIpAddress',
   async (ipAddress) => {
+    const localStorageGeolocation = localStorage.getItem(ipAddress);
+    if (localStorageGeolocation) {
+      return JSON.parse(localStorageGeolocation);
+    }
     const { data } = await axios.get(`${BASE_URL}?apiKey=${API_KEY}&ipAddress=${ipAddress}`);
     return data;
   },

@@ -1,14 +1,32 @@
 import L from 'leaflet';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import { useSelector } from 'react-redux';
 import iconLocation from '../assets/icon-location.svg';
+import { selectGeolocation } from '../redux/store';
 
 const markerIcon = L.icon({
   iconUrl: iconLocation,
 });
 
-const Map = ({ position, setMap }) => {
+const Map = () => {
+  const [map, setMap] = useState(null);
+  const geolocation = useSelector(selectGeolocation);
+  const { lat, lng } = geolocation?.location ?? {};
+
+  useEffect(() => {
+    if (lat && lng) {
+      map?.flyTo([lat, lng], map.getZoom());
+    }
+  }, [map, lat, lng]);
+
+  if (!lat || !lng) {
+    return null;
+  }
+
+  const position = [lat, lng];
+
   return (
     <Container className="px-0" as="section" fluid>
       <MapContainer
@@ -26,11 +44,6 @@ const Map = ({ position, setMap }) => {
       </MapContainer>
     </Container>
   );
-};
-
-Map.propTypes = {
-  position: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setMap: PropTypes.func.isRequired,
 };
 
 export default Map;
