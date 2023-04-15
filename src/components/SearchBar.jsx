@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import iconArrow from '../assets/icon-arrow.svg';
 import CardInfo from './CardInfo';
+import { selectGeolocation } from '../redux/store';
 import { fetchGeolocationFromIpAddress } from '../redux/slices/geolocation-slice';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const geolocation = useSelector(selectGeolocation);
   const [inputValue, setInputValue] = useState('');
   const [submitValue, setSubmitValue] = useState('8.8.8.8');
 
@@ -41,7 +43,7 @@ const SearchBar = () => {
           </Col>
         </Row>
       </Form>
-      <CardInfo />
+      <CardInfo geolocation={geolocation} />
     </Container>
   );
 };
