@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import iconArrow from '../assets/icon-arrow.svg';
+import CardInfo from './CardInfo';
 import { fetchGeolocationFromIpAddress } from '../redux/slices/geolocation-slice';
 
 const SearchBar = () => {
@@ -40,6 +41,7 @@ const SearchBar = () => {
           </Col>
         </Row>
       </Form>
+      <CardInfo />
     </Container>
   );
 };
