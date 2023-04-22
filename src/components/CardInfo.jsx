@@ -1,11 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Container, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { selectGeolocation } from '../redux/store';
 import ColumnInfo from './ColumnInfo';
 
-const CardInfo = ({ geolocation }) => {
-  const { ip, location, isp } = geolocation;
+const fallbackGeolocation = {
+  ip: '',
+  location: { region: '', country: '', postalCode: '', timezone: '' },
+  isp: '',
+};
+
+const CardInfo = () => {
+  const geolocation = useSelector(selectGeolocation);
+
+  const { ip, location, isp } = geolocation ?? fallbackGeolocation;
   const { region, country, postalCode, timezone } = location;
+
   return (
     <Container className="card-container z-index-3">
       <Row className="py-4 justify-content-between align-items-center d-flex card-info" xs="auto">
@@ -19,16 +29,3 @@ const CardInfo = ({ geolocation }) => {
 };
 
 export default CardInfo;
-
-CardInfo.propTypes = {
-  geolocation: PropTypes.shape({
-    ip: PropTypes.string,
-    isp: PropTypes.string,
-    location: PropTypes.shape({
-      region: PropTypes.string,
-      country: PropTypes.string,
-      postalCode: PropTypes.string,
-      timezone: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
-};
