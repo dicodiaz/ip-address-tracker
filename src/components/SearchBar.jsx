@@ -3,11 +3,13 @@ import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import iconArrow from '../assets/icon-arrow.svg';
 import { fetchGeolocationFromIpAddress } from '../redux/slices/geolocation-slice';
+import CardInfo from './CardInfo';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
   const [submitValue, setSubmitValue] = useState('8.8.8.8');
+  const [isInvalid, setIsInvalid] = useState(false);
 
   useEffect(() => {
     dispatch(fetchGeolocationFromIpAddress(submitValue));
@@ -15,8 +17,13 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/.test(inputValue)) {
+      setIsInvalid(true);
+      return;
+    }
     setSubmitValue(inputValue);
     setInputValue('');
+    setIsInvalid(false);
   };
 
   return (
@@ -31,7 +38,11 @@ const SearchBar = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.currentTarget.value)}
               size="lg"
+              isInvalid={isInvalid}
             />
+            <Form.Control.Feedback type="invalid">
+              Please enter valid IP address
+            </Form.Control.Feedback>
           </Col>
           <Col>
             <Button className="button-border-radius" type="submit" variant="dark" size="lg">
@@ -40,6 +51,7 @@ const SearchBar = () => {
           </Col>
         </Row>
       </Form>
+      <CardInfo />
     </Container>
   );
 };
