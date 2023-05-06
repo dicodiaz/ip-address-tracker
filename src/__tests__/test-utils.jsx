@@ -3,6 +3,10 @@ import { PropTypes } from 'prop-types';
 import { Provider } from 'react-redux';
 import { setupStore } from '../redux/store';
 
+/* The renderWithProviders function is meant to be used for every component that interacts with the redux store.
+  For every other component (i.e. any component that doesn't interact with the redux store), 
+  please use the regular render function exported from @testing-library/react instead. */
+// TODO: Remove rule disabling once another utility function is added
 // eslint-disable-next-line import/prefer-default-export
 export const renderWithProviders = (
   ui,

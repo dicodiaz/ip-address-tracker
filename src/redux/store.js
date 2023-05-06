@@ -7,12 +7,15 @@ const reducer = {
   geolocationReducer,
 };
 
+// The setupStore function allows to create several stores with the same configuration
+// This is useful mainly to separate concerns between test and dev/prod environments
 export const setupStore = (preloadedState) => {
   return configureStore({
     reducer,
     preloadedState,
     middleware: (getDefaultMiddleware) => {
       const middlewares = [];
+      // Define which middlewares to add for each separate environment
       switch (import.meta.env.MODE) {
         case 'development':
           middlewares.push(localStorageMiddleware, logger);
