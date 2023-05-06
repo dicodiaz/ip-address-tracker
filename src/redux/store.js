@@ -11,8 +11,22 @@ export const setupStore = (preloadedState) => {
   return configureStore({
     reducer,
     preloadedState,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(logger, localStorageMiddleware),
+    middleware: (getDefaultMiddleware) => {
+      const middlewares = [];
+      switch (import.meta.env.MODE) {
+        case 'development':
+          middlewares.push(localStorageMiddleware, logger);
+          break;
+        case 'production':
+          middlewares.push(localStorageMiddleware);
+          break;
+        case 'test':
+          middlewares.push(/* Add middlewares to test environment */);
+          break;
+        default:
+      }
+      return getDefaultMiddleware().concat(...middlewares);
+    },
   });
 };
 

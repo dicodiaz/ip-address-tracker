@@ -24,7 +24,11 @@ const initialState = {
 const geolocationSlice = createSlice({
   name: 'geolocation',
   initialState,
-  reducers: {},
+  reducers: {
+    setGeolocation: (state, action) => {
+      state.geolocation = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchGeolocationFromIpAddress.fulfilled, (state, { payload }) => {
       state.geolocation = payload;
@@ -32,5 +36,7 @@ const geolocationSlice = createSlice({
   },
 });
 /* eslint-enable no-param-reassign */
+
+export const { setGeolocation } = geolocationSlice.actions;
 
 export default geolocationSlice.reducer;
