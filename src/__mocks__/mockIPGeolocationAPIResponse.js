@@ -21,4 +21,27 @@ const mockIPGeolocationAPIResponse = {
   isp: 'Google LLC',
 };
 
+export const mockIPGeolocationAPIResponseWithDifferentIP = {
+  ip: '1.1.1.1',
+  location: {
+    country: 'US',
+    region: 'California',
+    city: 'Los Angeles',
+    lat: 34.05223,
+    lng: -118.24368,
+    postalCode: '90001',
+    timezone: '-07:00',
+    geonameId: 5368361,
+  },
+  domains: ['28xfy.cc', '7fnsj.cc', '850606.xyz', '98.ws', 'atlasreplymonitoring.it'],
+  as: {
+    asn: 13335,
+    name: 'CLOUDFLARENET',
+    route: '1.1.1.0/24',
+    domain: 'https://www.cloudflare.com',
+    type: 'Content',
+  },
+  isp: 'Cloudflare, Inc.',
+};
+
 export default mockIPGeolocationAPIResponse;
