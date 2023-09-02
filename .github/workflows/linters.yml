@@ -17,7 +17,7 @@ jobs:
       - name: Setup ESLint
         run: npm install --save-dev @typescript-eslint/eslint-plugin@6.x @typescript-eslint/parser@6.x eslint@8.x eslint-plugin-react-hooks@4.x eslint-plugin-react-refresh@0.x
       - name: ESLint Report
-        run: npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+        run: npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0
   stylelint:
     name: Stylelint
     runs-on: ubuntu-22.04
