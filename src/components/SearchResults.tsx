@@ -13,7 +13,7 @@ const fallbackGeolocation = {
 
 const SearchResults: FC = () => {
   const geolocation = useAppSelector(selectGeolocation);
-  const [squareRef, { height }] = useElementSize();
+  const [squareRef, { height }] = useElementSize(geolocation);
 
   const { ip, location, isp } = geolocation ?? fallbackGeolocation;
   const { region, country, postalCode, timezone } = location;

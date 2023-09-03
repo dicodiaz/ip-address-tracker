@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { useEventListener } from 'usehooks-ts';
+import { GeolocationType } from '../redux/utils/types';
 
 interface Size {
   width: number;
   height: number;
 }
 
-const useElementSize = <T extends HTMLElement = HTMLDivElement>(): [
-  (node: T | null) => void,
-  Size,
-] => {
+const useElementSize = <T extends HTMLElement = HTMLDivElement>(
+  geolocation?: GeolocationType,
+): [(node: T | null) => void, Size] => {
   // Mutable values like 'ref.current' aren't valid dependencies
   // because mutating them doesn't re-render the component.
   // Instead, we use a state as a ref to be reactive.
@@ -25,7 +25,8 @@ const useElementSize = <T extends HTMLElement = HTMLDivElement>(): [
       width: ref?.offsetWidth || 0,
       height: ref?.offsetHeight || 0,
     });
-  }, [ref?.offsetHeight, ref?.offsetWidth]);
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, [geolocation]);
 
   useEventListener('resize', handleSize);
 
