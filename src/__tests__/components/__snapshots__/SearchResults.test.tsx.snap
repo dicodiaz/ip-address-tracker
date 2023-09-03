@@ -1,0 +1,84 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchResults component > should render as expected 1`] = `
+<div>
+  <section
+    class="z-1100 container"
+  >
+    <div
+      class="rounded-4 p-4 p-md-5 card"
+      style="margin-top: 0px; margin-bottom: 0px;"
+    >
+      <div
+        class="mx-0 g-0 justify-content-between row row-cols-md-4 row-cols-1"
+      >
+        <div
+          class="col"
+        >
+          <h6
+            class="search-results-item-title"
+          >
+            IP Address
+          </h6>
+          <p
+            class="search-results-item-text"
+          >
+            8.8.8.8
+          </p>
+        </div>
+        <div
+          class="d-none v-line"
+        />
+        <div
+          class="col"
+        >
+          <h6
+            class="search-results-item-title"
+          >
+            Location
+          </h6>
+          <p
+            class="search-results-item-text"
+          >
+            California, US 94043
+          </p>
+        </div>
+        <div
+          class="d-none v-line"
+        />
+        <div
+          class="col"
+        >
+          <h6
+            class="search-results-item-title"
+          >
+            Timezone
+          </h6>
+          <p
+            class="search-results-item-text"
+          >
+            UTC: -07:00
+          </p>
+        </div>
+        <div
+          class="d-none v-line"
+        />
+        <div
+          class="col"
+        >
+          <h6
+            class="search-results-item-title"
+          >
+            ISP
+          </h6>
+          <p
+            class="search-results-item-text"
+          >
+            Google LLC
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

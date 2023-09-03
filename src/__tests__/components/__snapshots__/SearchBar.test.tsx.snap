@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchBar component > should render as expected 1`] = `
+<div>
+  <section
+    class="bg-search-bar flex-grow-1 py-4 container-fluid"
+  >
+    <h1
+      class="text-white text-center mb-3"
+    >
+      IP Address Tracker
+    </h1>
+    <form
+      class=""
+    >
+      <div
+        class="mx-0 g-0 justify-content-center row"
+      >
+        <div
+          class="mw-form-control col"
+        >
+          <input
+            aria-label="search-ip"
+            class="form-control form-control-lg"
+            placeholder="Search for any IP address"
+            value=""
+          />
+          <div
+            class="invalid-feedback"
+          >
+            Please enter valid IP address
+          </div>
+        </div>
+        <div
+          class="col-auto"
+        >
+          <button
+            aria-label="submit"
+            class="btn btn-dark btn-lg"
+            type="submit"
+          >
+            <img
+              aria-label="icon-arrow"
+              class="align-baseline"
+              src="/src/assets/icon-arrow.svg"
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>
+`;
