@@ -7,7 +7,7 @@ import { fetchGeolocationFromIpAddress } from '../redux/slices/geolocationSlice'
 const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState('');
-  const [submitValue, setSubmitValue] = useState('1.1.1.1');
+  const [submitValue, setSubmitValue] = useState('8.8.8.8');
   const [isInvalid, setIsInvalid] = useState(false);
 
   useEffect(() => {
@@ -37,14 +37,15 @@ const SearchBar: FC = () => {
               onChange={(e) => setInputValue(e.currentTarget.value)}
               size="lg"
               isInvalid={isInvalid}
+              aria-label="search-ip"
             />
             <Form.Control.Feedback type="invalid">
               Please enter valid IP address
             </Form.Control.Feedback>
           </Col>
           <Col xs="auto">
-            <Button type="submit" variant="dark" size="lg">
-              <Image className="align-baseline" src={iconArrow} />
+            <Button type="submit" variant="dark" size="lg" aria-label="submit">
+              <Image className="align-baseline" src={iconArrow} aria-label="icon-arrow" />
             </Button>
           </Col>
         </Row>
